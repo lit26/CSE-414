@@ -1,0 +1,8 @@
+--hw5 q1
+USE hw5;
+SELECT DISTINCT u.name AS cities
+FROM world x, x.mondial.country y, y.province z, 
+     (CASE WHEN is_array(z.city) 
+      THEN z.city ELSE [z.city] END) AS u 
+WHERE y.name = 'Peru'
+ORDER BY u.name;

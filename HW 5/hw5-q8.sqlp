@@ -1,0 +1,14 @@
+--hw5 q8
+USE hw5;
+SELECT z.`-car_code` AS country_code,z.name AS country_name, z.`-area` AS area
+FROM world x, x.mondial.country z
+LET g = (SELECT s.name
+	FROM world x,
+	x.mondial.sea s, 
+	split(s.`-country`, " ") c 
+	WHERE z.`-car_code` = c
+	GROUP BY s.name, s.height)
+WHERE coll_count(g) < 1
+GROUP BY z.`-car_code`,z.name, z.`-area`
+ORDER BY float(z.`-area`) DESC;
+

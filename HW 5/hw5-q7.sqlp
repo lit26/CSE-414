@@ -1,0 +1,11 @@
+--hw5 q7
+USE hw5;
+SELECT z.`-car_code` AS country_code, z.name AS country_name, g AS Grp
+FROM world x, x.mondial.country z
+LET g = (SELECT s.name AS sea
+	FROM x.mondial.sea s, 
+	split(s.`-country`, " ") c 
+	WHERE z.`-car_code` = c
+	GROUP BY s.name)
+WHERE coll_count(g) >= 2
+ORDER BY coll_count(g) DESC;

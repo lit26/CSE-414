@@ -1,0 +1,11 @@
+--hw5 q6
+USE hw5;
+SELECT z.`-car_code` AS country_code, z.name AS country_name, g AS Grp
+FROM world x, x.mondial.country z
+LET g = (SELECT m.name AS mountain, m.height AS mountain_height
+	FROM x.mondial.mountain m, 
+	split(m.`-country`, " ") c 
+	WHERE z.`-car_code` = c
+	GROUP BY m.name, m.height)
+ORDER BY coll_count(g) DESC;
+
