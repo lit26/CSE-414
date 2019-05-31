@@ -1,0 +1,2 @@
+/*HW3 d */
+It is easier to use. It can know that what is wrong when there is syntax error while the sqlite sometimes don't know the error. Forever, I think it is a little slower as sqlite runs locally while DBMS run in data centers.
